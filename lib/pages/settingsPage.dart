@@ -8,7 +8,14 @@ class SettingPages extends StatelessWidget {
         appBar: AppBar(
           title: Text("Settings"),
           centerTitle: true,
-          leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                size: 22,
+              )),
           backgroundColor: Color.fromARGB(150, 55, 79, 128),
         ),
         body: Center(
