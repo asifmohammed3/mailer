@@ -1,13 +1,14 @@
 import 'package:bulkmailer/pages/settingsPage.dart';
+import 'package:bulkmailer/widgets/customButton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-
-  Widget iconButton({       //for settings button with icon
+  Widget iconButton({
+    //for settings button with icon
     required void Function() buttonAction,
     required IconData buttonIcon,
     required Color buttonColor,
@@ -27,30 +28,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
       onPressed: buttonAction,
-    );
-  }
-
-
-  //for button with and without
-  withOrWithoutButton({buttonColor, buttonTextColor, buttonText}) {
-    return Container(
-      width: 250,
-      height: 80,
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: buttonColor,
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-      ),
-      child: ElevatedButton(
-        onPressed: () {},
-        child: Text(
-          buttonText,
-          style: TextStyle(
-            color: buttonTextColor,
-            fontSize: 30,
-          ),
-        ),
-      ),
     );
   }
 
@@ -87,15 +64,21 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              withOrWithoutButton(
-                buttonTextColor: Colors.white,
+              CustomButton(
+                onPressed: (){},
+                buttonColor: Colors.blue,
                 buttonText: "WITH",
-                buttonColor: Color.fromARGB(1, 168, 225, 255),
+                buttonTextColor: Colors.white,
+                fontSize: 30,
+                padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
               ),
-              withOrWithoutButton(
+              CustomButton(
+                onPressed: (){},
+                buttonColor: Colors.blue,
                 buttonTextColor: Colors.white,
                 buttonText: "WITHOUT",
-                buttonColor: Color.fromARGB(1, 168, 225, 255),
+                fontSize: 30,
+                padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
               ),
               SizedBox(
                 width: 50,
@@ -106,7 +89,8 @@ class HomePage extends StatelessWidget {
                       buttonAction: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SettingPages()),
+                          MaterialPageRoute(
+                              builder: (context) => SettingPages()),
                         );
                       },
                       buttonIcon: Icons.settings,
