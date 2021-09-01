@@ -15,7 +15,7 @@ class TextInputField extends StatelessWidget {
   Color? helperTextColor=Colors.white54;
   final void Function(String)? onChanged;
   final TextEditingController? controller;
-  final String? validatorText;
+  final String? Function(String?)? validator;
 
   TextInputField({
     required this.keyBoardType,
@@ -32,7 +32,7 @@ class TextInputField extends StatelessWidget {
     this.helperTextColor,
     this.onChanged,
     this.controller,
-    this.validatorText,
+    this.validator,
 
   });
 
@@ -41,13 +41,7 @@ class TextInputField extends StatelessWidget {
     return TextFormField(
       onChanged: onChanged,
       controller: controller,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return validatorText;
-        }
-        return null;
-      },
-
+      validator: validator,
 
       keyboardType: keyBoardType,
       enabled: true,
