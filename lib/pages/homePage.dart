@@ -1,6 +1,4 @@
 import 'package:bulkmailer/pages/settingsPage.dart';
-import 'package:bulkmailer/widgets/customButton.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -28,6 +26,29 @@ class HomePage extends StatelessWidget {
         ),
       ),
       onPressed: buttonAction,
+    );
+  }
+
+  //for button with and without
+  withOrWithoutButton({buttonColor, buttonTextColor, buttonText}) {
+    return Container(
+      width: 250,
+      height: 80,
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: buttonColor,
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
+      child: ElevatedButton(
+        onPressed: () {},
+        child: Text(
+          buttonText,
+          style: TextStyle(
+            color: buttonTextColor,
+            fontSize: 30,
+          ),
+        ),
+      ),
     );
   }
 
@@ -64,21 +85,15 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              CustomButton(
-                onPressed: (){},
-                buttonColor: Colors.blue,
-                buttonText: "WITH",
+              withOrWithoutButton(
                 buttonTextColor: Colors.white,
-                fontSize: 30,
-                padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                buttonText: "WITH",
+                buttonColor: Color.fromARGB(1, 168, 225, 255),
               ),
-              CustomButton(
-                onPressed: (){},
-                buttonColor: Colors.blue,
+              withOrWithoutButton(
                 buttonTextColor: Colors.white,
                 buttonText: "WITHOUT",
-                fontSize: 30,
-                padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                buttonColor: Color.fromARGB(1, 168, 225, 255),
               ),
               SizedBox(
                 width: 50,
