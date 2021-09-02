@@ -5,16 +5,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bulkmailer/mailer.dart';
 
-String senderEmail =new SettingPages() as String;
-
+String senderEmail = new SettingPages() as String;
 
 class SettingPages extends StatelessWidget {
-
   TextEditingController emailValue = TextEditingController();
   TextEditingController passwordValue = TextEditingController();
-  String? senderEmail ;
+  String? senderEmail;
   String? senderPassword;
-
 
   @override
   Widget build(BuildContext context) {
@@ -84,56 +81,40 @@ class SettingPages extends StatelessWidget {
                   keyBoardType: TextInputType.visiblePassword,
                 ),
               ),
-
-              SizedBox(height: 20,),
-
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 child: CustomButton(
                   onPressed: () {
                     senderEmail = emailValue.text;
                     senderPassword = passwordValue.text;
 
-
-
                     //for routing to homepage on pressing login
                     if (senderEmail!.isNotEmpty && senderPassword!.isNotEmpty) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => HomePage()),
-                      );
+                      sendMail(
+                          'secureotpcms@gmail.com', 'projecthillview', 'mohdasifparambil@gmail.com');
 
-                      //snackbar showing while succesful login
                       final snackBar = SnackBar(
                         content: const Text('Yay! Successfully logged in'),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-                    }
-
-
-                    else {
-                      //snackbar while any of field is not filled
-
-
+                    } else {
                       final snackBar = SnackBar(
                         content: const Text('Hey! Complete your credentials'),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
                   },
-
                   buttonColor: Colors.blue,
                   buttonTextColor: Colors.white,
                   buttonText: "Login",
                   fontSize: 20,
                   padding: EdgeInsets.all(0),
                 ),
-
               )
             ],
           )),
     );
   }
 }
-
