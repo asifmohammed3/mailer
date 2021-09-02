@@ -3,13 +3,17 @@ import 'package:bulkmailer/widgets/customButton.dart';
 import 'package:bulkmailer/widgets/textInputField.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:bulkmailer/mailer.dart';
+
+String senderEmail =new SettingPages() as String;
+
 
 class SettingPages extends StatelessWidget {
 
   TextEditingController emailValue = TextEditingController();
   TextEditingController passwordValue = TextEditingController();
-  String senderEmail = '';
-  String senderPassword = '';
+  String? senderEmail ;
+  String? senderPassword;
 
 
   @override
@@ -89,25 +93,31 @@ class SettingPages extends StatelessWidget {
                     senderEmail = emailValue.text;
                     senderPassword = passwordValue.text;
 
-                    //snackbar showing while succesful login
-                    final snackBar = SnackBar(
-                      content: const Text('Hey! Complete your credentials'),
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
 
                     //for routing to homepage on pressing login
-                    if (senderEmail.isNotEmpty && senderPassword.isNotEmpty) {
+                    if (senderEmail!.isNotEmpty && senderPassword!.isNotEmpty) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => HomePage()),
                       );
+
+                      //snackbar showing while succesful login
+                      final snackBar = SnackBar(
+                        content: const Text('Yay! Successfully logged in'),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
                     }
+
 
                     else {
                       //snackbar while any of field is not filled
+
+
                       final snackBar = SnackBar(
-                        content: const Text('Yay! Successfully logged in'),
+                        content: const Text('Hey! Complete your credentials'),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
