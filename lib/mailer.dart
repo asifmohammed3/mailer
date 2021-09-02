@@ -2,8 +2,8 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
 main() async {
-  String username = '';
-  String password = '';
+  String username ='' ;   //senderEmail
+  String password = '';   //senderPassword
 
   final smtpServer = gmail(username, password);
   // Use the SmtpServer class to configure an SMTP server:
