@@ -2,7 +2,7 @@ import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
 
 void sendMail(String user, String pass, String recipientMail) async {
-  String username = user; //senderEmail
+  String username = user;
   String password = pass;
 
   final smtpServer = gmail(username, password);
