@@ -1,4 +1,4 @@
-import 'package:bulkmailer/pages/homePage.dart';
+import 'package:bulkmailer/dataMangements/saveData.dart';
 import 'package:bulkmailer/widgets/customButton.dart';
 import 'package:bulkmailer/widgets/textInputField.dart';
 import 'package:flutter/cupertino.dart';
@@ -92,8 +92,7 @@ class SettingPages extends StatelessWidget {
 
                     //for routing to homepage on pressing login
                     if (senderEmail!.isNotEmpty && senderPassword!.isNotEmpty) {
-                      sendMail(
-                          senderEmail!, senderPassword!, 'mohdasifparambil@gmail.com');
+                      SaveData(senderEmail,senderPassword);
 
                       final snackBar = SnackBar(
                         content: const Text('Yay! Successfully logged in'),
